@@ -14,6 +14,7 @@ const products = [
     id: 1,
     name: "Cubit Smart Watch",
     sku: "FROX-19853",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$576.23",
     status: "Active",
     qty: 556,
@@ -26,18 +27,20 @@ const products = [
     id: 2,
     name: "Cubit Smart Watch",
     sku: "FROX-19854",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$512.99",
     status: "Active",
     qty: 410,
     rating: 4,
     sales: "160 / 1900",
     date: "2021-08-04",
-    image:img2,
+    image: img2,
   },
   {
     id: 3,
     name: "Cubit Smart Watch",
     sku: "FROX-19855",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$620.00",
     status: "Active",
     qty: 320,
@@ -50,6 +53,7 @@ const products = [
     id: 4,
     name: "Cubit Smart Watch",
     sku: "FROX-19856",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$430.50",
     status: "Active",
     qty: 600,
@@ -62,6 +66,7 @@ const products = [
     id: 5,
     name: "Cubit Smart Watch",
     sku: "FROX-19857",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$489.75",
     status: "Active",
     qty: 444,
@@ -74,6 +79,7 @@ const products = [
     id: 6,
     name: "Cubit Smart Watch",
     sku: "FROX-19858",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$540.00",
     status: "Active",
     qty: 390,
@@ -86,6 +92,7 @@ const products = [
     id: 7,
     name: "Cubit Smart Watch",
     sku: "FROX-19859",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$599.90",
     status: "Active",
     qty: 288,
@@ -98,18 +105,304 @@ const products = [
     id: 8,
     name: "Cubit Smart Watch",
     sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: "$450.10",
     status: "Active",
     qty: 520,
     rating: 4,
     sales: "130 / 1800",
     date: "2021-07-29",
-    image:img4,
+    image: img4,
+  },
+  {
+    id: 9,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 10,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 11,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 12,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 13,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 14,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 15,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 16,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19853",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$576.23",
+    status: "Active",
+    qty: 556,
+    rating: 5,
+    sales: "198 / 2056",
+    date: "2021-08-05",
+    image: img1,
+  },
+  {
+    id: 17,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19854",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$512.99",
+    status: "Active",
+    qty: 410,
+    rating: 4,
+    sales: "160 / 1900",
+    date: "2021-08-04",
+    image: img2,
+  },
+  {
+    id: 18,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19855",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$620.00",
+    status: "Active",
+    qty: 320,
+    rating: 5,
+    sales: "210 / 2200",
+    date: "2021-08-03",
+    image: img3,
+  },
+  {
+    id: 19,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19856",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$430.50",
+    status: "Active",
+    qty: 600,
+    rating: 4,
+    sales: "120 / 1800",
+    date: "2021-08-02",
+    image: img4,
+  },
+  {
+    id: 20,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19857",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$489.75",
+    status: "Active",
+    qty: 444,
+    rating: 5,
+    sales: "178 / 2000",
+    date: "2021-08-01",
+    image: img1,
+  },
+  {
+    id: 21,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19858",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$540.00",
+    status: "Active",
+    qty: 390,
+    rating: 4,
+    sales: "150 / 1900",
+    date: "2021-07-31",
+    image: img2,
+  },
+  {
+    id: 22,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19859",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$599.90",
+    status: "Active",
+    qty: 288,
+    rating: 5,
+    sales: "210 / 2100",
+    date: "2021-07-30",
+    image: img3,
+  },
+  {
+    id: 23,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 24,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 25,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 26,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 27,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 28,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 29,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
+  },
+  {
+    id: 30,
+    name: "Cubit Smart Watch",
+    sku: "FROX-19860",
+    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: "$450.10",
+    status: "Active",
+    qty: 520,
+    rating: 4,
+    sales: "130 / 1800",
+    date: "2021-07-29",
+    image: img4,
   },
 ];
 
 const Page = () => {
-  // ---- UI state ----
   const [viewMode, setViewMode] = useState("list"); // "list" | "grid"
   const [sortBy, setSortBy] = useState("newest"); // "newest" | "oldest" | "price-asc" | "price-desc"
   const [searchTerm, setSearchTerm] = useState("");
@@ -117,16 +410,13 @@ const Page = () => {
 
   const itemsPerPage = 5;
 
-  // Reset to first page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortBy, viewMode]);
 
-  // ---- filtering + sorting ----
   const filteredAndSorted = useMemo(() => {
     let list = [...products];
 
-    // search by name or SKU
     if (searchTerm.trim()) {
       const q = searchTerm.toLowerCase();
       list = list.filter(
@@ -135,7 +425,6 @@ const Page = () => {
       );
     }
 
-    // sort
     list.sort((a, b) => {
       const priceA = parseFloat(a.price.replace(/[^0-9.]/g, ""));
       const priceB = parseFloat(b.price.replace(/[^0-9.]/g, ""));
@@ -158,7 +447,6 @@ const Page = () => {
     return list;
   }, [searchTerm, sortBy]);
 
-  // ---- pagination ----
   const totalPages = Math.max(
     1,
     Math.ceil(filteredAndSorted.length / itemsPerPage)
@@ -182,9 +470,9 @@ const Page = () => {
       {/* Main container (no navbar) */}
       <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6">
         {/* ========== SIDEBAR ========== */}
-        <aside className="w-64 mt-[-30px] bg-white border-r border-gray-100 flex flex-col">
+        <aside className="w-64 mt-[-20px] bg-white border-r border-gray-100 flex flex-col">
           {/* Main nav */}
-          <asidelink className="space-y-1">
+          <div className="space-y-1">
             {[
               "Dashboard",
               "Products",
@@ -193,7 +481,8 @@ const Page = () => {
               "Transactions",
               "Clients",
             ].map((item, idx) => (
-               <Link href={`/${item}`}
+              <Link
+                href={`/${item}`}
                 key={item}
                 className={`flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 ${
                   idx === 0
@@ -205,7 +494,7 @@ const Page = () => {
                 {item}
               </Link>
             ))}
-          </asidelink>
+          </div>
 
           {/* Categories */}
           <div className="mt-6 px-6">
@@ -381,24 +670,31 @@ const Page = () => {
                     key={p.id}
                     className="grid grid-cols-9 items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition"
                   >
-                    {/* Image */}
+                    {/* Image (clickable to ProductDetails) */}
                     <div>
-                      <div className="h-12 w-12 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <Image
-                          src={p.image}
-                          alt={p.name}
-                          width={48}
-                          height={48}
-                          className="object-cover"
-                        />
-                      </div>
+                      <Link href={`/ProductDetails`}>
+                        <div className="h-12 w-12 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden cursor-pointer">
+                          <Image
+                            src={p.image}
+                            alt={p.name}
+                            width={48}
+                            height={48}
+                            className="object-cover"
+                          />
+                        </div>
+                      </Link>
                     </div>
 
-                    {/* Name + description */}
+                    {/* Name + description (clickable to ProductDetails) */}
                     <div className="col-span-2">
-                      <p className="font-semibold text-gray-800">{p.name}</p>
+                      <Link
+                        href={`/ProductDetails`}
+                        className="font-semibold text-gray-800 hover:text-[#3226D9]"
+                      >
+                        {p.name}
+                      </Link>
                       <p className="text-[11px] text-gray-400">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        {p.Description}
                       </p>
                     </div>
 
@@ -486,9 +782,10 @@ const Page = () => {
             <div className="bg-white rounded-2xl shadow-sm p-4">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-xs">
                 {currentProducts.map((p) => (
-                  <div
+                  <Link
+                    href={`/ProductDetails`}
                     key={p.id}
-                    className="border border-gray-100 rounded-2xl p-3 hover:shadow-sm transition flex flex-col"
+                    className="border border-gray-100 rounded-2xl p-3 hover:shadow-sm transition flex flex-col cursor-pointer"
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="h-14 w-14 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden">
@@ -534,7 +831,7 @@ const Page = () => {
                         })}
                       </span>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
 

@@ -5,6 +5,7 @@ import Logo from "../../../public/Image/navlogo.png";
 import Browse from "../../../public/Image/export.png"; 
 import Togglee from "../../../public/Image/Toogle.png";
 import UserAvatar from "../../../public/Image/Avatar.png";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -14,7 +15,7 @@ const Navbar = () => {
       
       {/* LEFT: Logo */}
       <div className="flex items-center gap-2 mr-6">
-        <div className="h-8 w-8 rounded-lg bg-purple-600 flex items-center justify-center">
+        <Link href='/' className="h-8 w-8 rounded-lg bg-purple-600 flex items-center justify-center">
           <span className="text-white font-bold text-xl">
             <Image
             src={Logo}
@@ -23,7 +24,7 @@ const Navbar = () => {
             height={20}
           />    
           </span>
-        </div>
+        </Link>
         <h1 className="text-lg font-semibold text-gray-400">Frox</h1>
       </div>
 
@@ -41,11 +42,11 @@ const Navbar = () => {
       </div>
 
       {/* CENTER: Search + Browse */}
-      <div className="flex items-center gap-4 flex-1">
+      <div className="flex items-center gap-4 flex-1 ml-20">
 
         {/* Search Bar */}
         <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-80">
-          <Search className="text-gray-400 h-4 w-4 mr-2" />
+          <Search className="text-gray-400 h-4 w-4 mr-8" />
           <input
             type="text"
             placeholder="Search"

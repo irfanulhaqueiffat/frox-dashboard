@@ -9,7 +9,7 @@ const page = () => {
       {/* main rounded container */}
       <div className="w-full  mr-20 bg-white border-b border-gray-200 flex items-center px-6">
         {/* SIDEBAR */}
-        <aside className="w-64 mt-[-200px] bg-white border-r border-gray-100 flex flex-col">
+        <aside className="w-64 mt-[-150px] bg-white border-r border-gray-100 flex flex-col">
           
          
 
@@ -125,10 +125,11 @@ const page = () => {
           {/* heading + breadcrumb + date */}
           <div className="flex items-start justify-between mb-4">
             <div>
-              <p className="text-xs text-gray-400 mb-1">Home &gt; Dashboard</p>
-              <h1 className="text-2xl font-semibold text-gray-800">
+               <h1 className="text-2xl font-semibold text-gray-800">
                 Dashboard
               </h1>
+              <p className="text-xs text-gray-400 mb-1">Home &gt; Dashboard</p>
+             
             </div>
             <div className="text-xs text-gray-400">
               Feb 15, 2022 – Feb 21, 2022
@@ -461,16 +462,8 @@ const page = () => {
             </div>
           </div>
 
-          {/* footer */}
-          <div className="flex justify-between items-center mt-2 text-[10px] text-gray-400">
-            <p>© 2022 · Frox Dashboard · Made by AiffThemes</p>
-            <div className="space-x-4">
-              <button>About</button>
-              <button>Careers</button>
-              <button>Policy</button>
-              <button>Contact</button>
-            </div>
-          </div>
+         
+          
         </main>
       </div>
     </div>
