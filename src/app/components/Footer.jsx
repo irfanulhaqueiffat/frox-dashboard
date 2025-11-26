@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <>
     {/* Footer */}
-          <div className="flex justify-between items-center mt-4 text-[10px] text-gray-400">
+          <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-[10px] text-gray-400 gap-2 sm:gap-0">
             <p>© 2022 · Frox Dashboard · Made by AiffThemes</p>
-            <div className="space-x-4">
+            <div className="flex items-center space-x-4">
               <button>About</button>
               <button>Careers</button>
               <button>Policy</button>

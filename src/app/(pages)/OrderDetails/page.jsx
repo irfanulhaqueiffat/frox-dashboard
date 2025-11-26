@@ -4,6 +4,8 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import upgradeimg from "../../../../public/Image/Group 2.png";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
+import { IoMdArrowDropleftCircle } from "react-icons/io";
 
 // ---------- MOCK ORDER DATA (dynamic) ----------
 const order = {
@@ -63,6 +65,9 @@ const Page = () => {
   const [status, setStatus] = useState(order.initialStatus);
   const [note, setNote] = useState(order.notes);
 
+  // 🔹 sidebar toggle state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const totals = useMemo(() => {
     const subtotal = order.products.reduce(
       (sum, p) => sum + p.price * p.qty,
@@ -99,11 +104,37 @@ const Page = () => {
   return (
     <div className="min-h-screen flex justify-center items-start py-6">
       {/* main rounded container */}
-      <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6">
+      <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6 relative">
+        {/* 🔹 Sidebar reopen button (when hidden) */}
+        {!isSidebarOpen && (
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="absolute left-2 top-4 z-20 bg-white border border-gray-200 rounded-full px-3 py-1 text-2xl text-gray-600 shadow-sm hover:bg-gray-100 transition"
+          >
+           <IoMdArrowDroprightCircle />
+          </button>
+        )}
+
         {/* ========== SIDEBAR ========== */}
-        <aside className="w-64 mt-[-20px] bg-white border-r border-gray-100 flex flex-col">
+        <aside
+          className={`w-64 mt-[20px] bg-white border-r border-gray-100 flex flex-col transform transition-transform duration-300 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Sidebar header + hide button */}
+          <div className="px-4 pt-3 pb-2 flex items-center justify-between">
+            <span className="text-[11px] font-semibold text-gray-400 uppercase">
+              Menu
+            </span>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="text-2xl text-gray-500 border border-gray-200 rounded-full px-2 py-[2px] hover:bg-gray-100 transition"
+            ><IoMdArrowDropleftCircle />
+            </button>
+          </div>
+
           {/* Main nav */}
-          <div className="space-y-1">
+          <div className="space-y-1 px-2">
             {[
               "Dashboard",
               "Products",
@@ -111,15 +142,11 @@ const Page = () => {
               "Payments",
               "Transactions",
               "Clients",
-            ].map((item, idx) => (
+            ].map((item) => (
               <Link
                 href={`/${item}`}
                 key={item}
-                className={`flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 ${
-                  idx === 0
-                    ? "text-gray-500 hover:bg-blue-800 hover:text-white"
-                    : "text-gray-500 hover:bg-blue-800 hover:text-white "
-                }`}
+                className="flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 text-gray-500 hover:bg-blue-800 hover:text-white transition"
               >
                 <span className="h-2 w-2 rounded-full bg-gray-300 mr-2" />
                 {item}
@@ -215,13 +242,13 @@ const Page = () => {
           {/* Header */}
           <div className="flex items-center justify-between mb-4">
             <div>
-                  <h1 className="text-2xl font-semibold text-gray-800">
+              <h1 className="text-2xl font-semibold text-gray-800">
                 Order Details
               </h1>
               <p className="text-xs text-gray-400 mb-1">
                 Home &gt; Dashboard
               </p>
-            
+
               <div className="mt-2 text-xs text-gray-500 space-y-1">
                 <p>Orders ID: {order.id}</p>
                 <div className="flex items-center gap-2">
@@ -327,7 +354,7 @@ const Page = () => {
               </button>
             </div>
 
-            {/* Empty spacer to mimic layout / or you can put something else */}
+            {/* spacer */}
             <div className="hidden lg:block" />
           </div>
 

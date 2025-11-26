@@ -4,10 +4,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
 import upgradeimg from "../../../../public/Image/Group 2.png";
-import mainWatch from "../../../../public/product images/Rectangle 6321.png"; // 
-import selectedImage from "../../../../public/product images/image 159(1).png";
+import mainWatch from "../../../../public/product images/Rectangle 6321.png";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
+import { IoMdArrowDropleftCircle } from "react-icons/io";
 
 const Page = () => {
+  // ------- sidebar toggle -------
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   // ------- state for main product -------
   const [productName, setProductName] = useState("Cubit Smart Watch");
   const [description, setDescription] = useState(
@@ -39,59 +43,64 @@ const Page = () => {
       name: "Product_thumbnail_1.png",
       progress: 45,
       status: "error",
+      image: mainWatch,
     },
     {
       id: 2,
       name: "Product_thumbnail_2.png",
       progress: 100,
       status: "done",
+      image: mainWatch,
     },
     {
       id: 3,
       name: "Product_thumbnail_3.png",
       progress: 100,
       status: "done",
+      image: mainWatch,
     },
     {
       id: 4,
       name: "Product_thumbnail_4.png",
       progress: 100,
       status: "done",
+      image: mainWatch,
     },
     {
       id: 5,
       name: "Product_thumbnail_5.png",
       progress: 100,
       status: "done",
+      image: mainWatch,
     },
   ];
 
-  // Simulate clicking gallery -> change preview (in real app each item would have image src)
-const handleGalleryClick = (item) => {
-  setSelectedImage(item.image);
-};
-
+  // gallery click -> change preview
+  const handleGalleryClick = (item) => {
+    if (item.image) {
+      setSelectedImage(item.image);
+    }
+  };
 
   // ------- tag helpers -------
-const handleAddTag = (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
+  const handleAddTag = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
 
-    const value = newTag.trim();
-    if (!value) return;
+      const value = newTag.trim();
+      if (!value) return;
 
-    if (!tags.includes(value)) {
-      setTags([...tags, value]);
+      if (!tags.includes(value)) {
+        setTags([...tags, value]);
+      }
+
+      setNewTag("");
     }
+  };
 
-    setNewTag("");
-  }
-};
-
-
-const handleRemoveTag = (t) => {
-  setTags(tags.filter((tag) => tag !== t));
-};
+  const handleRemoveTag = (t) => {
+    setTags(tags.filter((tag) => tag !== t));
+  };
 
   // ------- fake submit -------
   const handleUpdate = () => {
@@ -108,19 +117,45 @@ const handleRemoveTag = (t) => {
       taxClass,
       tags,
     };
-    // replace with API call later
     console.log("UPDATE PRODUCT", payload);
     alert("Product updated (check console for payload)");
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-start py-6">
+    <div className="min-h-screen flex justify-center items-start py-6 bg-[#F6F7FB]">
       {/* main rounded container */}
-      <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6">
+      <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6 relative">
+        {/* 🔹 Sidebar reopen button (when hidden) */}
+        {!isSidebarOpen && (
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="absolute left-2 top-4 z-20 bg-white border border-gray-200 rounded-full px-3 py-1 text-2xl text-gray-600 shadow-sm hover:bg-gray-100 transition"
+          >
+            <IoMdArrowDroprightCircle/>
+          </button>
+        )}
+
         {/* SIDEBAR */}
-        <aside className="w-64 mt-[-20px] bg-white border-r border-gray-100 flex flex-col">
+        <aside
+          className={`w-64 mt-[-20px] bg-white border-r border-gray-100 flex flex-col transform transition-transform duration-300 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* sidebar header + hide btn */}
+          <div className="px-4 pt-3 pb-2 flex items-center justify-between">
+            <span className="text-[11px] font-semibold text-gray-400 uppercase">
+              Menu
+            </span>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="text-2xl text-gray-500 border border-gray-200 rounded-full px-2 py-[2px] hover:bg-gray-100 transition"
+            >
+             <IoMdArrowDropleftCircle/>
+            </button>
+          </div>
+
           {/* Main nav */}
-          <div className="space-y-1">
+          <div className="space-y-1 px-2">
             {[
               "Dashboard",
               "Products",
@@ -128,15 +163,11 @@ const handleRemoveTag = (t) => {
               "Payments",
               "Transactions",
               "Clients",
-            ].map((item, idx) => (
+            ].map((item) => (
               <Link
                 href={`/${item}`}
                 key={item}
-                className={`flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 ${
-                  idx === 0
-                    ? "text-gray-500 hover:bg-blue-800 hover:text-white"
-                    : "text-gray-500 hover:bg-blue-800 hover:text-white "
-                }`}
+                className="flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 text-gray-500 hover:bg-blue-800 hover:text-white transition"
               >
                 <span className="h-2 w-2 rounded-full bg-gray-300 mr-2" />
                 {item}
@@ -150,33 +181,27 @@ const handleRemoveTag = (t) => {
               Categories
             </p>
             <ul className="space-y-2 text-sm text-gray-500">
-              <li className="flex items-center justify-between">
-                <span>Laptops</span>
-                <span className="h-2 w-2 rounded-full bg-purple-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Mobile phones</span>
-                <span className="h-2 w-2 rounded-full bg-pink-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Desktops</span>
-                <span className="h-2 w-2 rounded-full bg-blue-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Accessories</span>
-                <span className="h-2 w-2 rounded-full bg-yellow-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Portable storage</span>
-                <span className="h-2 w-2 rounded-full bg-green-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Networking</span>
-                <span className="h-2 w-2 rounded-full bg-red-400" />
-              </li>
+              {[
+                ["Laptops", "bg-purple-400"],
+                ["Mobile phones", "bg-pink-400"],
+                ["Desktops", "bg-blue-400"],
+                ["Accessories", "bg-yellow-400"],
+                ["Portable storage", "bg-green-400"],
+                ["Networking", "bg-red-400"],
+              ].map(([label, dot]) => (
+                <li
+                  key={label}
+                  className="flex items-center justify-between group"
+                >
+                  <span className="group-hover:text-gray-700 transition">
+                    {label}
+                  </span>
+                  <span className={`h-2 w-2 rounded-full ${dot}`} />
+                </li>
+              ))}
             </ul>
 
-            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1">
+            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
               <span className="h-5 w-5 rounded-full border border-dashed border-gray-300 flex items-center justify-center text-lg leading-none">
                 +
               </span>
@@ -231,14 +256,12 @@ const handleRemoveTag = (t) => {
         <main className="flex-1 px-8 py-6 bg-[#F6F7FB]">
           {/* Header */}
           <div className="mb-4">
-           < h1 className="text-2xl font-semibold text-gray-800">
+            <h1 className="text-2xl font-semibold text-gray-800">
               Product Details
             </h1>
-            
             <p className="text-xs text-gray-400 mb-1">
               Home &gt; Product Details
             </p>
-            
           </div>
 
           {/* Form + Preview */}

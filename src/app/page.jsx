@@ -3,10 +3,7 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import Image from "next/image"; 
+import Image from "next/image";
 import Logo from "../../public/Image/Landing Success 1.png";
 
 const Page = () => {
@@ -23,34 +20,45 @@ const Page = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://dummyjson.com/user/login", {
+      const res = await fetch("https://dummyjson.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username,          // e.g. "emilys"
           password,          // e.g. "emilyspass"
-          expiresInMins: 30, // access token lifetime
+          expiresInMins: 30,
         }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "Login failed");
+        // DummyJSON কখনও `message`, কখনও `error` দেয়
+        setError(data.message || data.error || "Login failed");
         setLoading(false);
         return;
       }
 
-      // --- Save tokens in cookies ---
-      const expiresInMins = 30; // we know what we sent
+      // ✅ DummyJSON থেকে আসে accessToken + refreshToken
+      const accessToken = data.accessToken;
+      const refreshToken = data.refreshToken;
+
+      const expiresInMins = 30;
       const tokenExpiresAt = Date.now() + expiresInMins * 60 * 1000;
 
-      Cookies.set("token", data.token, { expires: 1 }); // 1 day
-      Cookies.set("refreshToken", data.refreshToken, { expires: 7 }); // 7 days
+      // SAVE TOKENS IN COOKIES
+      Cookies.set("token", accessToken, { expires: 1 });
+      Cookies.set("refreshToken", refreshToken, { expires: 7 });
       Cookies.set("tokenExpiresAt", String(tokenExpiresAt), { expires: 1 });
       Cookies.set("user", JSON.stringify(data), { expires: 1 });
 
-      // --- Navigate to Dashboard after successful login ---
+      // EXTRA: SAVE TO LOCALSTORAGE FOR LOGOUT
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("user", JSON.stringify(data));
+      }
+
+      // REDIRECT TO DASHBOARD
       router.push("/Dashboard");
     } catch (err) {
       console.error(err);
@@ -67,12 +75,7 @@ const Page = () => {
         <div className="flex justify-center mb-4">
           <div className="h-16 w-16 bg-purple-200 rounded-full flex items-center justify-center">
             <span className="text-purple-600 text-2xl">
-                <Image
-                src={Logo}
-                alt="Logo"
-                width={30}
-                height={30}
-              />
+              <Image src={Logo} alt="Logo" width={30} height={30} />
             </span>
           </div>
         </div>
@@ -85,9 +88,7 @@ const Page = () => {
         <form onSubmit={handleLogin} className="space-y-4">
           {/* Username / email */}
           <div>
-            <label className="text-gray-600 text-sm">
-              E-mail or phone number
-            </label>
+            <label className="text-gray-600 text-sm">E-mail or username</label>
             <input
               type="text"
               placeholder="Email / username"
@@ -110,9 +111,7 @@ const Page = () => {
           </div>
 
           {error && (
-            <p className="text-red-500 text-xs mt-1">
-              {error}
-            </p>
+            <p className="text-red-500 text-xs mt-1">{error}</p>
           )}
 
           <button
@@ -128,18 +127,13 @@ const Page = () => {
           <button className="text-xs text-gray-500">Forgot password?</button>
         </div>
 
-        {/* Social buttons (dummy) */}
+        {/* username & password for testing */}
         <div className="flex gap-3 mt-4">
-          <button className="flex-1 border rounded-lg py-2 flex items-center justify-center gap-4 text-xs">
-            <FaGoogle /><span>Google account</span>
-          </button>
-          <button className="flex-1 border text-blue-700 rounded-lg py-2 flex items-center justify-center gap-4 text-xs">
-           <FaFacebookSquare /><span>Facebook account</span>
-          </button>
+          <p className="flex-1 border rounded-lg py-2 flex items-center justify-center gap-2 text-xs">
+            Us: <span className="font-mono">emilys</span> |
+            Pass: <span className="font-mono">emilyspass</span>
+          </p>
         </div>
-
-        
-        
       </div>
     </div>
   );

@@ -1,20 +1,50 @@
-import React from "react";
-import upgradeimg from "../../../../public/Image/Group 2.png"
+"use client";
+
+import React, { useState } from "react";
+import upgradeimg from "../../../../public/Image/Group 2.png";
 import Image from "next/image";
 import Link from "next/link";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
+import { IoMdArrowDropleftCircle } from "react-icons/io";
 
-const page = () => {
+const Page = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
     <div className="min-h-screen flex justify-center items-start py-6">
       {/* main rounded container */}
-      <div className="w-full  mr-20 bg-white border-b border-gray-200 flex items-center px-6">
+      <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-center px-6 relative">
+        {/* 🔹 Sidebar reopen button (when hidden) */}
+        {!isSidebarOpen && (
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="absolute left-2 top-4 z-20 bg-white border border-gray-200 rounded-full px-3 py-1 text-2xl text-gray-600 shadow-sm hover:bg-gray-100 transition"
+          >
+           <IoMdArrowDroprightCircle/>
+          </button>
+        )}
+
         {/* SIDEBAR */}
-        <aside className="w-64 mt-[-150px] bg-white border-r border-gray-100 flex flex-col">
-          
-         
+        <aside
+          className={`w-64 mt-[20px] bg-white border-r border-gray-100 flex flex-col transform transition-transform duration-300 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Sidebar header + hide button */}
+          <div className="px-4 pt-3 pb-2 flex items-center justify-between">
+            <span className="text-[11px] font-semibold text-gray-400 uppercase">
+              Menu
+            </span>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="text-2xl text-gray-500 border border-gray-200 rounded-full px-2 py-[2px] hover:bg-gray-100 transition"
+            >
+            <IoMdArrowDropleftCircle/>
+            </button>
+          </div>
 
           {/* Main nav */}
-          <asidelink className="  space-y-1">
+          <div className="space-y-1 px-2">
             {[
               "Dashboard",
               "Products",
@@ -23,19 +53,16 @@ const page = () => {
               "Transactions",
               "Clients",
             ].map((item, idx) => (
-              <Link href={`/${item}`}
+              <Link
+                href={`/${item}`}
                 key={item}
-                className={`flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 ${
-                  idx === 0
-                    ? "text-gray-500 hover:bg-blue-800 hover:text-white"
-                    : "text-gray-500 hover:bg-blue-800 hover:text-white "
-                }`}
+                className="flex items-center rounded-xl px-3 py-2 text-sm w-full text-left mb-1 text-gray-500 hover:bg-blue-800 hover:text-white transition"
               >
                 <span className="h-2 w-2 rounded-full bg-gray-300 mr-2" />
                 {item}
               </Link>
             ))}
-          </asidelink>
+          </div>
 
           {/* Categories */}
           <div className="mt-6 px-6">
@@ -93,20 +120,20 @@ const page = () => {
           </div>
 
           {/* Upgrade card */}
-         <div className=" w-[206px] h-[286] bg-[#E8EDF2] rounded-2xl mb-20 mt-[74px]">
-          <div className="mt-6 mx-4 mb-5 rounded-2xl bg-[#E9E6FF] p-4 flex flex-col">
-            <div className="h-20 p-20 rounded-xl flex items-center justify-center mb-4 mt-20">
-              <Image src={upgradeimg} alt="Upgrade Image" className="absolute mt-[-60px] ml-[-40px]"/>
-            </div>
-            <div className="flex-1 mb-4">
-              
-         
-            </div>
-            <button className="text-xs font-semibold text-white bg-[#3226D9] rounded-lg py-2">
-              Upgrade Now
-            </button>
-          </div>
-         </div>
+              <div className="w-[206px] bg-[#E8EDF2] rounded-2xl mb-20 mt-[74px]">
+                     <div className="mt-6 mx-4 mb-5 rounded-2xl bg-[#E9E6FF] p-4 flex flex-col relative overflow-hidden">
+                       <div className="h-20 p-20 rounded-xl flex items-center justify-center mb-4 mt-20 relative">
+                         <Image
+                           src={upgradeimg}
+                           alt="Upgrade Image"
+                           className="absolute top-[-40px] left-[-20px]"
+                         />
+                       </div>
+                       <button className="text-xs font-semibold text-white bg-[#3226D9] rounded-lg py-2">
+                         Upgrade Now
+                       </button>
+                     </div>
+                   </div>
 
           {/* bottom toggles */}
           <div className="mt-auto px-6 pb-5 flex items-center justify-between">
@@ -125,11 +152,10 @@ const page = () => {
           {/* heading + breadcrumb + date */}
           <div className="flex items-start justify-between mb-4">
             <div>
-               <h1 className="text-2xl font-semibold text-gray-800">
+              <h1 className="text-2xl font-semibold text-gray-800">
                 Dashboard
               </h1>
               <p className="text-xs text-gray-400 mb-1">Home &gt; Dashboard</p>
-             
             </div>
             <div className="text-xs text-gray-400">
               Feb 15, 2022 – Feb 21, 2022
@@ -159,7 +185,7 @@ const page = () => {
                 amount: "$12,125",
                 percent: "23.9%",
               },
-            ].map((card, i) => (
+            ].map((card) => (
               <div
                 key={card.title}
                 className="bg-white rounded-2xl shadow-sm px-4 py-3 flex flex-col justify-between"
@@ -204,14 +230,28 @@ const page = () => {
               {/* fake area chart */}
               <div className="mt-4 h-48 bg-gradient-to-t from-[#F4EBFF] to-white rounded-2xl relative overflow-hidden">
                 <div className="absolute inset-4 flex items-end gap-2">
-                  {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map(
-                    (m, idx) => (
-                      <div key={m} className="flex-1 flex flex-col items-center">
-                        <div className="w-8 bg-[#E0D3FF] rounded-t-2xl h-20" />
-                        <p className="mt-1 text-[10px] text-gray-400">{m}</p>
-                      </div>
-                    )
-                  )}
+                  {[
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                  ].map((m) => (
+                    <div
+                      key={m}
+                      className="flex-1 flex flex-col items-center"
+                    >
+                      <div className="w-8 bg-[#E0D3FF] rounded-t-2xl h-20" />
+                      <p className="mt-1 text-[10px] text-gray-400">{m}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -226,12 +266,36 @@ const page = () => {
               </div>
               <ul className="space-y-3 text-sm">
                 {[
-                  { name: "Esther Howard", role: "Louis Vuitton", value: "$456.01" },
-                  { name: "Wade Warren", role: "Skrillatics", value: "$439.22" },
-                  { name: "Cameron Williamson", role: "Mastercard", value: "$421.00" },
-                  { name: "Jenny Wilson", role: "Paypal", value: "$405.27" },
-                  { name: "Leslie Alexander", role: "Apple", value: "$398.84" },
-                  { name: "Kristin Watson", role: "Starbucks", value: "$351.02" },
+                  {
+                    name: "Esther Howard",
+                    role: "Louis Vuitton",
+                    value: "$456.01",
+                  },
+                  {
+                    name: "Wade Warren",
+                    role: "Skrillatics",
+                    value: "$439.22",
+                  },
+                  {
+                    name: "Cameron Williamson",
+                    role: "Mastercard",
+                    value: "$421.00",
+                  },
+                  {
+                    name: "Jenny Wilson",
+                    role: "Paypal",
+                    value: "$405.27",
+                  },
+                  {
+                    name: "Leslie Alexander",
+                    role: "Apple",
+                    value: "$398.84",
+                  },
+                  {
+                    name: "Kristin Watson",
+                    role: "Starbucks",
+                    value: "$351.02",
+                  },
                 ].map((item) => (
                   <li
                     key={item.name}
@@ -243,7 +307,9 @@ const page = () => {
                         <p className="text-xs font-semibold text-gray-800">
                           {item.name}
                         </p>
-                        <p className="text-[10px] text-gray-400">{item.role}</p>
+                        <p className="text-[10px] text-gray-400">
+                          {item.role}
+                        </p>
                       </div>
                     </div>
                     <span className="text-xs font-semibold text-gray-700">
@@ -261,7 +327,9 @@ const page = () => {
               <p className="text-sm font-semibold text-gray-800">
                 Recent Purchases
               </p>
-              <span className="text-[11px] text-gray-400">View all</span>
+              <span className="text-[11px] text-gray-400 cursor-pointer">
+                View all
+              </span>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full text-xs">
@@ -389,7 +457,10 @@ const page = () => {
                 {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
                   (d, i) => (
                     <div key={d} className="flex-1 flex flex-col items-center">
-                      <div className="w-5 rounded-full bg-[#E0D3FF]" style={{ height: `${40 + i * 5}px` }} />
+                      <div
+                        className="w-5 rounded-full bg-[#E0D3FF]"
+                        style={{ height: `${40 + i * 5}px` }}
+                      />
                       <p className="mt-1 text-[10px] text-gray-400">{d}</p>
                     </div>
                   )
@@ -461,13 +532,10 @@ const page = () => {
               </p>
             </div>
           </div>
-
-         
-          
         </main>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
