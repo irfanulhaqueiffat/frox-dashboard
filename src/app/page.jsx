@@ -129,7 +129,7 @@ const Page = () => {
 
         {/* username & password for testing */}
         <div className="flex gap-3 mt-4">
-          <p className="flex-1 border rounded-lg text-black py-2 flex items-center justify-center gap-2 text-xs">
+          <p className="flex-1 border rounded-2xlgit  text-black py-2 flex items-center justify-center gap-2 text-xs">
             Us: <span className="font-mono">emilys</span> |
             Pass: <span className="font-mono">emilyspass</span>
           </p>
