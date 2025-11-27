@@ -111,7 +111,7 @@ const Page = () => {
         </aside>
 
         {/* MAIN CONTENT */}
-        <main className="flex-1 px-8 py-6">
+        <main className="flex-1 px-8 py-6mt-[-500px] ">
           {/* heading + breadcrumb + date */}
           <div className="flex items-start justify-between mb-4">
             <div>
