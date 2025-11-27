@@ -4,420 +4,77 @@ import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import upgradeimg from "../../../../public/Image/Group 2.png";
-import img1 from "../../../../public/product images/headphone.png";
-import img2 from "../../../../public/product images/watch.png";
-import img3 from "../../../../public/product images/onLight.png";
-import img4 from "../../../../public/product images/keyboard.png";
-import { IoMdArrowDroprightCircle } from "react-icons/io";
-import { IoMdArrowDropleftCircle } from "react-icons/io";
-
-
-const products = [
-  {
-    id: 1,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19853",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$576.23",
-    status: "Active",
-    qty: 556,
-    rating: 5,
-    sales: "198 / 2056",
-    date: "2021-08-05",
-    image: img1,
-  },
-  {
-    id: 2,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19854",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$512.99",
-    status: "Active",
-    qty: 410,
-    rating: 4,
-    sales: "160 / 1900",
-    date: "2021-08-04",
-    image: img2,
-  },
-  {
-    id: 3,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19855",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$620.00",
-    status: "Active",
-    qty: 320,
-    rating: 5,
-    sales: "210 / 2200",
-    date: "2021-08-03",
-    image: img3,
-  },
-  {
-    id: 4,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19856",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$430.50",
-    status: "Active",
-    qty: 600,
-    rating: 4,
-    sales: "120 / 1800",
-    date: "2021-08-02",
-    image: img4,
-  },
-  {
-    id: 5,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19857",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$489.75",
-    status: "Active",
-    qty: 444,
-    rating: 5,
-    sales: "178 / 2000",
-    date: "2021-08-01",
-    image: img1,
-  },
-  {
-    id: 6,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19858",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$540.00",
-    status: "Active",
-    qty: 390,
-    rating: 4,
-    sales: "150 / 1900",
-    date: "2021-07-31",
-    image: img2,
-  },
-  {
-    id: 7,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19859",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$599.90",
-    status: "Active",
-    qty: 288,
-    rating: 5,
-    sales: "210 / 2100",
-    date: "2021-07-30",
-    image: img3,
-  },
-  {
-    id: 8,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 9,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 10,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 11,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 12,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 13,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 14,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 15,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 16,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19853",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$576.23",
-    status: "Active",
-    qty: 556,
-    rating: 5,
-    sales: "198 / 2056",
-    date: "2021-08-05",
-    image: img1,
-  },
-  {
-    id: 17,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19854",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$512.99",
-    status: "Active",
-    qty: 410,
-    rating: 4,
-    sales: "160 / 1900",
-    date: "2021-08-04",
-    image: img2,
-  },
-  {
-    id: 18,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19855",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$620.00",
-    status: "Active",
-    qty: 320,
-    rating: 5,
-    sales: "210 / 2200",
-    date: "2021-08-03",
-    image: img3,
-  },
-  {
-    id: 19,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19856",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$430.50",
-    status: "Active",
-    qty: 600,
-    rating: 4,
-    sales: "120 / 1800",
-    date: "2021-08-02",
-    image: img4,
-  },
-  {
-    id: 20,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19857",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$489.75",
-    status: "Active",
-    qty: 444,
-    rating: 5,
-    sales: "178 / 2000",
-    date: "2021-08-01",
-    image: img1,
-  },
-  {
-    id: 21,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19858",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$540.00",
-    status: "Active",
-    qty: 390,
-    rating: 4,
-    sales: "150 / 1900",
-    date: "2021-07-31",
-    image: img2,
-  },
-  {
-    id: 22,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19859",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$599.90",
-    status: "Active",
-    qty: 288,
-    rating: 5,
-    sales: "210 / 2100",
-    date: "2021-07-30",
-    image: img3,
-  },
-  {
-    id: 23,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 24,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 25,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 26,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 27,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 28,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 29,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-  {
-    id: 30,
-    name: "Cubit Smart Watch",
-    sku: "FROX-19860",
-    Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: "$450.10",
-    status: "Active",
-    qty: 520,
-    rating: 4,
-    sales: "130 / 1800",
-    date: "2021-07-29",
-    image: img4,
-  },
-];
+import { IoMdArrowDroprightCircle, IoMdArrowDropleftCircle } from "react-icons/io";
+import Catagories from "../../components/Catagories";
 
 const Page = () => {
   const [viewMode, setViewMode] = useState("list"); // "list" | "grid"
   const [sortBy, setSortBy] = useState("newest"); // "newest" | "oldest" | "price-asc" | "price-desc"
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // 🔹 sidebar toggle
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // sidebar toggle
+
+  const [products, setProducts] = useState([]);      // 🔹 API theke asha products
+  const [loading, setLoading] = useState(true);      // 🔹 loading state
+  const [error, setError] = useState(null);          // 🔹 error state
 
   const itemsPerPage = 5;
 
+  // 🔹 1) API theke data ana
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const res = await fetch("https://dummyjson.com/products");
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+
+        const data = await res.json();
+        console.log("API products:", data);
+
+        // data.products holo real list
+        const mapped = data.products.map((item, index) => {
+          // ekta fake date generate korchi (latest theke piche)
+          const date = new Date();
+          date.setDate(date.getDate() - index); // protiti product er jonne ekdin kore piche
+
+          return {
+            id: item.id,
+            name: item.title,
+            sku: `SKU-${String(item.id).padStart(5, "0")}`,
+            Description: item.description,
+            // price string banacchi, jate tomader sort logic same thake
+            price: `$${Number(item.price).toFixed(2)}`,
+            status: "Active",
+            qty: item.stock,
+            rating: Math.round(item.rating || 4),
+            sales: `${Math.floor(item.stock / 3)} / ${item.stock + 500}`,
+            date: date.toISOString().split("T")[0],
+            image: item.thumbnail, // external image URL
+          };
+        });
+
+        setProducts(mapped);
+      } catch (err) {
+        console.error(err);
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // search/sort/view change hole page 1 e reset
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortBy, viewMode]);
 
+  // 🔹 2) filter + sort
   const filteredAndSorted = useMemo(() => {
     let list = [...products];
 
@@ -425,7 +82,8 @@ const Page = () => {
       const q = searchTerm.toLowerCase();
       list = list.filter(
         (p) =>
-          p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q)
+          p.name.toLowerCase().includes(q) ||
+          p.sku.toLowerCase().includes(q)
       );
     }
 
@@ -449,7 +107,7 @@ const Page = () => {
     });
 
     return list;
-  }, [searchTerm, sortBy]);
+  }, [searchTerm, sortBy, products]);
 
   const totalPages = Math.max(
     1,
@@ -471,9 +129,8 @@ const Page = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-start py-6 bg-[#F6F7FB]">
-      {/* Main container (no navbar) */}
       <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-start px-6 relative">
-        {/* 🔹 Sidebar reopen button (when hidden) */}
+        {/* Sidebar reopen button */}
         {!isSidebarOpen && (
           <button
             onClick={() => setIsSidebarOpen(true)}
@@ -483,7 +140,7 @@ const Page = () => {
           </button>
         )}
 
-        {/* ========== SIDEBAR ========== */}
+        {/* SIDEBAR */}
         <aside
           className={`w-64 mt-[20px] bg-white border-r border-gray-100 flex flex-col transform transition-transform duration-300 ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -498,8 +155,7 @@ const Page = () => {
               onClick={() => setIsSidebarOpen(false)}
               className="text-2xl text-gray-500 border border-gray-200 rounded-full px-2 py-[2px] hover:bg-gray-100 transition"
             >
-           
-                       <IoMdArrowDropleftCircle/>
+              <IoMdArrowDropleftCircle />
             </button>
           </div>
 
@@ -525,38 +181,7 @@ const Page = () => {
           </div>
 
           {/* Categories */}
-          <div className="mt-6 px-6">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase mb-3">
-              Categories
-            </p>
-            <ul className="space-y-2 text-sm text-gray-500">
-              {[
-                ["Laptops", "bg-purple-400"],
-                ["Mobile phones", "bg-pink-400"],
-                ["Desktops", "bg-blue-400"],
-                ["Accessories", "bg-yellow-400"],
-                ["Portable storage", "bg-green-400"],
-                ["Networking", "bg-red-400"],
-              ].map(([label, dot]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between group"
-                >
-                  <span className="group-hover:text-gray-700 transition">
-                    {label}
-                  </span>
-                  <span className={`h-2 w-2 rounded-full ${dot}`} />
-                </li>
-              ))}
-            </ul>
-
-            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-              <span className="h-5 w-5 rounded-full border border-dashed border-gray-300 flex items-center justify-center text-lg leading-none">
-                +
-              </span>
-              Add category
-            </button>
-          </div>
+      <Catagories />
 
           {/* Top Sellers */}
           <div className="mt-6 px-6">
@@ -601,7 +226,7 @@ const Page = () => {
           </div>
         </aside>
 
-        {/* ========== MAIN CONTENT (NO NAVBAR) ========== */}
+        {/* MAIN CONTENT */}
         <main className="flex-1 px-8 py-6">
           {/* Header + controls */}
           <div className="flex items-start justify-between mb-4">
@@ -653,25 +278,37 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Search + count */}
-          <div className="flex items-center justify-between mb-3 text-[11px]">
-            <p className="text-gray-500">
-              Showing {currentProducts.length} of {filteredAndSorted.length}{" "}
-              products
+          {/* Loading / Error states */}
+          {loading && (
+            <p className="text-sm text-gray-500 mb-4">Loading products...</p>
+          )}
+          {error && (
+            <p className="text-sm text-red-500 mb-4">
+              Failed to load products: {error}
             </p>
-            <div className="relative">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search by name or SKU..."
-                className="border border-gray-200 rounded-full px-3 py-1 pl-4 text-xs text-gray-600 bg-gray-50 focus:outline-none focus:border-[#3226D9]"
-              />
-            </div>
-          </div>
+          )}
 
-          {/* ================= VIEW: LIST ================= */}
-          {viewMode === "list" && (
+          {/* Search + count */}
+          {!loading && !error && (
+            <div className="flex items-center justify-between mb-3 text-[11px]">
+              <p className="text-gray-500">
+                Showing {currentProducts.length} of {filteredAndSorted.length}{" "}
+                products
+              </p>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search by name or SKU..."
+                  className="border border-gray-200 rounded-full px-3 py-1 pl-4 text-xs text-gray-600 bg-gray-50 focus:outline-none focus:border-[#3226D9]"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* VIEW: LIST */}
+          {!loading && !error && viewMode === "list" && (
             <div className="bg-white rounded-2xl shadow-sm p-4">
               {/* Table header row */}
               <div className="grid grid-cols-9 text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-3 mb-2">
@@ -692,7 +329,7 @@ const Page = () => {
                     key={p.id}
                     className="grid grid-cols-9 items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition"
                   >
-                    {/* Image (clickable to ProductDetails) */}
+                    {/* Image */}
                     <div>
                       <Link href={`/ProductDetails`}>
                         <div className="h-12 w-12 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden cursor-pointer">
@@ -707,7 +344,7 @@ const Page = () => {
                       </Link>
                     </div>
 
-                    {/* Name + description (clickable to ProductDetails) */}
+                    {/* Name + description */}
                     <div className="col-span-2">
                       <Link
                         href={`/ProductDetails`}
@@ -799,8 +436,8 @@ const Page = () => {
             </div>
           )}
 
-          {/* ================= VIEW: GRID ================= */}
-          {viewMode === "grid" && (
+          {/* VIEW: GRID */}
+          {!loading && !error && viewMode === "grid" && (
             <div className="bg-white rounded-2xl shadow-sm p-4">
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-xs">
                 {currentProducts.map((p) => (

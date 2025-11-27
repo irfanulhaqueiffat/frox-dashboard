@@ -6,6 +6,7 @@ import Image from "next/image";
 import upgradeimg from "../../../../public/Image/Group 2.png";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
+import Catagories from "../../components/Catagories";
 const pendingTransactionsData = [
   {
     id: 1,
@@ -400,45 +401,7 @@ const Page = () => {
           </div>
 
           {/* Categories */}
-          <div className="mt-6 px-6">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase mb-3">
-              Categories
-            </p>
-            <ul className="space-y-2 text-sm text-gray-500">
-              <li className="flex items-center justify-between">
-                <span>Laptops</span>
-                <span className="h-2 w-2 rounded-full bg-purple-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Mobile phones</span>
-                <span className="h-2 w-2 rounded-full bg-pink-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Desktops</span>
-                <span className="h-2 w-2 rounded-full bg-blue-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Accessories</span>
-                <span className="h-2 w-2 rounded-full bg-yellow-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Portable storage</span>
-                <span className="h-2 w-2 rounded-full bg-green-400" />
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Networking</span>
-                <span className="h-2 w-2 rounded-full bg-red-400" />
-              </li>
-            </ul>
-
-            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-              <span className="h-5 w-5 rounded-full border border-dashed border-gray-300 flex items-center justify-center text-lg leading-none">
-                +
-              </span>
-              Add category
-            </button>
-          </div>
-
+          <Catagories />
           {/* Top Sellers */}
           <div className="mt-6 px-6">
             <p className="text-[11px] font-semibold text-gray-400 uppercase mb-3">

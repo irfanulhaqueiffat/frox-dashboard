@@ -6,6 +6,7 @@ import Image from "next/image";
 import upgradeimg from "../../../../public/Image/Group 2.png";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { IoMdArrowDropleftCircle } from "react-icons/io";
+import Catagories from "../../components/Catagories";
 
 const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -64,38 +65,7 @@ const Page = () => {
           </div>
 
           {/* Categories */}
-          <div className="mt-6 px-6">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase mb-3">
-              Categories
-            </p>
-            <ul className="space-y-2 text-sm text-gray-500">
-              {[
-                ["Laptops", "bg-purple-400"],
-                ["Mobile phones", "bg-pink-400"],
-                ["Desktops", "bg-blue-400"],
-                ["Accessories", "bg-yellow-400"],
-                ["Portable storage", "bg-green-400"],
-                ["Networking", "bg-red-400"],
-              ].map(([label, dot]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between group"
-                >
-                  <span className="group-hover:text-gray-700 transition">
-                    {label}
-                  </span>
-                  <span className={`h-2 w-2 rounded-full ${dot}`} />
-                </li>
-              ))}
-            </ul>
-
-            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-              <span className="h-5 w-5 rounded-full border border-dashed border-gray-300 flex items-center justify-center text-lg leading-none">
-                +
-              </span>
-              Add category
-            </button>
-          </div>
+        <Catagories />
 
           {/* Top Sellers */}
           <div className="mt-6 px-6">

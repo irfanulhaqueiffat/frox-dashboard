@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import upgradeimg from "../../../../public/Image/Group 2.png";
 import mainWatch from "../../../../public/product images/Rectangle 6321.png";
-import { IoMdArrowDroprightCircle } from "react-icons/io";
-import { IoMdArrowDropleftCircle } from "react-icons/io";
+import { IoMdArrowDroprightCircle, IoMdArrowDropleftCircle } from "react-icons/io";
+import Catagories from "../../components/Catagories";
+
+const API_BASE = "https://dummyjson.com/products";
 
 const Page = () => {
   // ------- sidebar toggle -------
@@ -75,7 +77,6 @@ const Page = () => {
     },
   ];
 
-  // gallery click -> change preview
   const handleGalleryClick = (item) => {
     if (item.image) {
       setSelectedImage(item.image);
@@ -102,23 +103,101 @@ const Page = () => {
     setTags(tags.filter((tag) => tag !== t));
   };
 
-  // ------- fake submit -------
-  const handleUpdate = () => {
-    const payload = {
-      productName,
-      description,
-      category,
-      brand,
-      sku,
-      stockQty,
-      regularPrice,
-      salePrice,
-      taxStatus,
-      taxClass,
-      tags,
-    };
-    console.log("UPDATE PRODUCT", payload);
-    alert("Product updated (check console for payload)");
+  // ------- API loading / feedback -------
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiMessage, setApiMessage] = useState("");
+  const productId = 1; // demo jonne dummyjson e id 1 use korchi
+
+  // ------- ADD API (POST) -------
+  const handleAdd = async () => {
+    try {
+      setIsSubmitting(true);
+      setApiMessage("");
+
+      const body = {
+        title: productName,
+        description,
+        price: Number(salePrice || regularPrice) || 0,
+        stock: stockQty,
+        brand,
+        category,
+        sku,
+        tags,
+      };
+
+      const res = await fetch(`${API_BASE}/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const data = await res.json();
+      console.log("ADD RESPONSE:", data);
+      setApiMessage(`Product added with id: ${data.id || "N/A"}`);
+    } catch (err) {
+      console.error(err);
+      setApiMessage("Failed to add product.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ------- UPDATE API (PUT/PATCH) -------
+  const handleUpdate = async () => {
+    try {
+      setIsSubmitting(true);
+      setApiMessage("");
+
+      const body = {
+        title: productName,
+        description,
+        price: Number(salePrice || regularPrice) || 0,
+        stock: stockQty,
+        brand,
+        category,
+        sku,
+        tags,
+      };
+
+      const res = await fetch(`${API_BASE}/${productId}`, {
+        method: "PUT", // or "PATCH"
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const data = await res.json();
+      console.log("UPDATE RESPONSE:", data);
+      setApiMessage(`Product ${productId} updated successfully.`);
+    } catch (err) {
+      console.error(err);
+      setApiMessage("Failed to update product.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // ------- DELETE API -------
+  const handleDelete = async () => {
+    const ok = window.confirm("Are you sure you want to delete this product?");
+    if (!ok) return;
+
+    try {
+      setIsSubmitting(true);
+      setApiMessage("");
+
+      const res = await fetch(`${API_BASE}/${productId}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      console.log("DELETE RESPONSE:", data);
+      setApiMessage(`Product ${productId} deleted (dummyjson response in console).`);
+    } catch (err) {
+      console.error(err);
+      setApiMessage("Failed to delete product.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,7 +210,7 @@ const Page = () => {
             onClick={() => setIsSidebarOpen(true)}
             className="absolute left-2 top-4 z-20 bg-white border border-gray-200 rounded-full px-3 py-1 text-2xl text-gray-600 shadow-sm hover:bg-gray-100 transition"
           >
-            <IoMdArrowDroprightCircle/>
+            <IoMdArrowDroprightCircle />
           </button>
         )}
 
@@ -150,7 +229,7 @@ const Page = () => {
               onClick={() => setIsSidebarOpen(false)}
               className="text-2xl text-gray-500 border border-gray-200 rounded-full px-2 py-[2px] hover:bg-gray-100 transition"
             >
-             <IoMdArrowDropleftCircle/>
+              <IoMdArrowDropleftCircle />
             </button>
           </div>
 
@@ -176,38 +255,7 @@ const Page = () => {
           </div>
 
           {/* Categories */}
-          <div className="mt-6 px-6">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase mb-3">
-              Categories
-            </p>
-            <ul className="space-y-2 text-sm text-gray-500">
-              {[
-                ["Laptops", "bg-purple-400"],
-                ["Mobile phones", "bg-pink-400"],
-                ["Desktops", "bg-blue-400"],
-                ["Accessories", "bg-yellow-400"],
-                ["Portable storage", "bg-green-400"],
-                ["Networking", "bg-red-400"],
-              ].map(([label, dot]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between group"
-                >
-                  <span className="group-hover:text-gray-700 transition">
-                    {label}
-                  </span>
-                  <span className={`h-2 w-2 rounded-full ${dot}`} />
-                </li>
-              ))}
-            </ul>
-
-            <button className="mt-4 text-xs text-[#3226D9] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
-              <span className="h-5 w-5 rounded-full border border-dashed border-gray-300 flex items-center justify-center text-lg leading-none">
-                +
-              </span>
-              Add category
-            </button>
-          </div>
+           <Catagories />
 
           {/* Top Sellers */}
           <div className="mt-6 px-6">
@@ -263,6 +311,13 @@ const Page = () => {
               Home &gt; Product Details
             </p>
           </div>
+
+          {/* API message */}
+          {apiMessage && (
+            <div className="mb-3 text-xs px-3 py-2 rounded-lg bg-gray-100 text-gray-700">
+              {apiMessage}
+            </div>
+          )}
 
           {/* Form + Preview */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -453,14 +508,29 @@ const Page = () => {
               {/* Buttons */}
               <div className="flex flex-wrap gap-3 mt-4">
                 <button
-                  onClick={handleUpdate}
-                  className="px-5 py-2 rounded-lg bg-[#3226D9] text-white text-xs font-semibold"
+                  onClick={handleAdd}
+                  disabled={isSubmitting}
+                  className="px-5 py-2 rounded-lg bg-emerald-500 text-white text-xs font-semibold disabled:opacity-60"
                 >
-                  Update
+                  {isSubmitting ? "Working..." : "Add (API)"}
                 </button>
-                <button className="px-5 py-2 rounded-lg bg-[#FF4F6E] text-white text-xs font-semibold">
-                  Delete
+
+                <button
+                  onClick={handleUpdate}
+                  disabled={isSubmitting}
+                  className="px-5 py-2 rounded-lg bg-[#3226D9] text-white text-xs font-semibold disabled:opacity-60"
+                >
+                  {isSubmitting ? "Working..." : "Update (API)"}
                 </button>
+
+                <button
+                  onClick={handleDelete}
+                  disabled={isSubmitting}
+                  className="px-5 py-2 rounded-lg bg-[#FF4F6E] text-white text-xs font-semibold disabled:opacity-60"
+                >
+                  {isSubmitting ? "Working..." : "Delete (API)"}
+                </button>
+
                 <button className="px-5 py-2 rounded-lg bg-gray-100 text-gray-500 text-xs font-semibold">
                   Cancel
                 </button>

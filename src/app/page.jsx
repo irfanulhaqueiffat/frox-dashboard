@@ -75,20 +75,20 @@ const Page = () => {
         <div className="flex justify-center mb-4">
           <div className="h-16 w-16 bg-purple-200 rounded-full flex items-center justify-center">
             <span className="text-purple-600 text-2xl">
-              <Image src={Logo} alt="Logo" width={30} height={30} />
+              <Image src={Logo} alt="Logo" width={50} height={50} />
             </span>
           </div>
         </div>
 
-        <h1 className="text-center text-xl font-semibold">Welcome Back!</h1>
-        <p className="text-center text-gray-400 text-sm mb-6">
+        <h1 className="text-center text-xl  text-gray-600 font-semibold">Welcome Back!</h1>
+        <p className="text-center text-gray-700 text-sm mb-6">
           Let's build something great
         </p>
 
         <form onSubmit={handleLogin} className="space-y-4">
           {/* Username / email */}
           <div>
-            <label className="text-gray-600 text-sm">E-mail or username</label>
+            <label className="text-gray-400 text-sm">E-mail or username</label>
             <input
               type="text"
               placeholder="Email / username"
@@ -100,7 +100,7 @@ const Page = () => {
 
           {/* Password */}
           <div>
-            <label className="text-gray-600 text-sm">Password</label>
+            <label className="text-gray-400 text-sm">Password</label>
             <input
               type="password"
               placeholder="Password"

@@ -103,7 +103,7 @@ const Navbar = ({ user }) => {
           {/* LEFT: Logo */}
           <div className="flex items-center gap-2 mr-4">
             <Link
-              href="/"
+              href="/Dashboard"
               className="h-8 w-8 rounded-lg bg-purple-600 flex items-center justify-center"
             >
               <span className="text-white font-bold text-xl">
