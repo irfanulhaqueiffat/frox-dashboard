@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
 
@@ -15,7 +16,7 @@ export default function LayoutClient({ children }) {
 
   return (
     <>
-      {!hideNavbar && <Navbar />}
+      {!hideNavbar && <Navbar/>}
       {children}
       <Footer />
     </>
