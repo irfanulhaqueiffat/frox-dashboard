@@ -12,7 +12,7 @@ const Page = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="min-h-screen flex justify-center items-start py-6">
+    <div className="min-h-screen w-full flex justify-center items-start py-6">
       {/* main rounded container */}
       <div className="w-full mr-20 bg-white border-b border-gray-200 flex items-center px-6 relative">
         {/* 🔹 Sidebar reopen button (when hidden) */}

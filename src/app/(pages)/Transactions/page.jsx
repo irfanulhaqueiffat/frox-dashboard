@@ -204,7 +204,7 @@ const Page = () => {
   };
 
   const renderTableHeader = () => (
-    <div className="grid grid-cols-[40px,120px,1fr,1fr,1fr,1fr,60px] text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1 min-w-[640px]">
+    <div className=" flex justify-between gap-10   text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1 min-w-[640px]">
       <div>
         <input type="checkbox" className="accent-[#3226D9]" />
       </div>
@@ -220,7 +220,7 @@ const Page = () => {
   const renderRow = (row, section) => (
     <div
       key={row.id}
-      className="grid grid-cols-[40px,120px,1fr,1fr,1fr,1fr,60px] items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition min-w-[640px]"
+      className=" flex justify-between gap-10 text-left  items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition min-w-[640px]"
     >
       {/* checkbox */}
       <div>

@@ -316,7 +316,7 @@ const Page = () => {
                   setStatusFilter(e.target.value);
                   setPageIndex(1);
                 }}
-                className="border border-gray-200 rounded-full px-3 py-1 bg-white text-gray-500"
+                className="  flex justify-between items-center border border-gray-200 rounded-full px-3 py-1 bg-white text-gray-500"
               >
                 <option value="All">Status: All</option>
                 <option value="Delivered">Delivered</option>
@@ -383,7 +383,7 @@ const Page = () => {
             </div>
 
             {/* Table header */}
-            <div className="grid grid-cols-[40px,120px,1.5fr,1.5fr,1fr,1fr,80px] text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1">
+            <div className=" flex justify-between gap-8  grid-cols-[40px,120px,1.5fr,1.5fr,1fr,1fr,80px] text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1">
               <div>
                 <input type="checkbox" className="accent-[#3226D9]" />
               </div>
@@ -400,7 +400,7 @@ const Page = () => {
               {pageOrders.map((order, idx) => (
                 <div
                   key={idx}
-                  className="grid grid-cols-[40px,120px,1.5fr,1.5fr,1fr,1fr,80px] items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition"
+                  className=" flex justify-between gap-8  grid-cols-[40px,120px,1.5fr,1.5fr,1fr,1fr,80px] items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition"
                 >
                   {/* checkbox */}
                   <div>
@@ -434,7 +434,7 @@ const Page = () => {
                   </div>
 
                   {/* total + actions */}
-                  <div className="flex items-center justify-between pr-1">
+                  <div className="flex items-center justify-between pr-1 mr-4">
                     <span className="text-gray-700 font-semibold">
                       ${order.total.toFixed(2)}
                     </span>

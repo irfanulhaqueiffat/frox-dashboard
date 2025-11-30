@@ -479,7 +479,7 @@ const Page = () => {
 
             <div className="overflow-x-auto">
               {/* header */}
-              <div className="grid grid-cols-[40px,1.1fr,1.4fr,1.1fr,2fr,0.9fr,60px] text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1 min-w-[720px] divide-x divide-gray-100">
+              <div className=" flex justify-between gap-10   text-[11px] text-gray-400 font-semibold border-b border-gray-100 pb-2 mb-1 min-w-[720px] divide-x divide-gray-100">
                 {/* checkbox col */}
                 <div className="pl-0">
                   <input type="checkbox" className="accent-[#3226D9]" />
@@ -506,7 +506,7 @@ const Page = () => {
                 {pageCustomers.map((c) => (
                   <div
                     key={c.id}
-                    className="grid grid-cols-[40px,1.1fr,1.4fr,1.1fr,2fr,0.9fr,60px] items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition-all duration-150 min-w-[720px] divide-x divide-gray-100 hover:shadow-sm hover:-translate-y-[1px]"
+                    className=" flex justify-between  gap-10 text-left align-middle  py-2 rounded-xl hover:bg-[#F7F7FB] transition-all duration-150 min-w-[720px] divide-x divide-gray-100 hover:shadow-sm hover:-translate-y-[1px]"
                   >
                     {/* checkbox col */}
                     <div className="pl-0">
