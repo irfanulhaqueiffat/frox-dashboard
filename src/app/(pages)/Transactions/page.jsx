@@ -220,7 +220,7 @@ const Page = () => {
   const renderRow = (row, section) => (
     <div
       key={row.id}
-      className=" flex justify-between gap-10 text-left  items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition min-w-[640px]"
+      className=" flex justify-around gap-10   items-center py-2 rounded-xl hover:bg-[#F7F7FB] transition min-w-[640px]"
     >
       {/* checkbox */}
       <div>
